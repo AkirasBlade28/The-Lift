@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		final int[][] queues = {
+		final int[][] queues = {// tests
 			      new int[0], // G
 			      new int[0], // 1
 			      new int[0], // 2
@@ -24,9 +25,9 @@ public class Main {
 	}
 	 
 	public static int[] theLift(final int[][] queues, final int capacity) {
-		ArrayList<Integer> lift = new ArrayList<>(capacity);
+		List<Integer> lift = new ArrayList<>(capacity);
 		ArrayList<Integer> stopsAt = new ArrayList<>(); // aka solution
-		ArrayList<ArrayList<Integer>> convertQue = new ArrayList<>();// the power of ArrayList to remove actual queues
+		ArrayList<List<Integer>> convertQue = new ArrayList<>();//List to remove actual queues
 
 		convertQue = convertToObjTypeQue(convertQue, queues);
 		// I have used 'final int[][]' array as a metaphor for some logical signal boxes
@@ -49,7 +50,7 @@ public class Main {
 		return solution;
 	}
 	
-	public static ArrayList<ArrayList<Integer>> convertToObjTypeQue (ArrayList<ArrayList<Integer>> convert, int[][] que) {
+	public static ArrayList<List<Integer>> convertToObjTypeQue (ArrayList<List<Integer>> convert, int[][] que) {
 		for(int i=0; i<que.length; ++i) {
 			convert.add(new ArrayList<>());
 			for(int r=0; r<que[i].length; ++r) {
@@ -59,7 +60,7 @@ public class Main {
 		return convert;
 	}
 	
-	public static void collectUpCall(ArrayList<ArrayList<Integer>> convertQue, ArrayList<Integer> lift, ArrayList<Integer> stopsAt, int cap) {
+	public static void collectUpCall(ArrayList<List<Integer>> convertQue, List<Integer> lift, ArrayList<Integer> stopsAt, int cap) {
 		
 		Set<Integer> set = new LinkedHashSet<>();
 		
@@ -106,7 +107,7 @@ public class Main {
 		}
 	}
 	
-	public static void collectDownCall(ArrayList<ArrayList<Integer>> convertQue, ArrayList<Integer> lift, ArrayList<Integer> stopsAt, int cap) {
+	public static void collectDownCall(ArrayList<List<Integer>> convertQue, List<Integer> lift, ArrayList<Integer> stopsAt, int cap) {
 		
 		Set<Integer> set = new LinkedHashSet<>();
 		
